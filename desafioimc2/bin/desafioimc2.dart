@@ -12,18 +12,18 @@ void main() {
 
     String peso = desafioimc2.lerDados('Digite Seu Peso Atual');
     if (double.tryParse(peso) == null) {
-      throw Exception('Informe um peso válido');
+      throw Exception('Peso Inválido. Tente novamente');
     }
 
     String altura = desafioimc2.lerDados('Digite Sua Altura Atual');
 
     if (double.tryParse(altura) == null) {
-      throw Exception('Informe uma altura válida');
+      throw Exception('Altura inválida. Tente novamente');
     }
 
     Pessoa pessoa = Pessoa(
-        peso: double.tryParse(peso) != null ? double.tryParse(peso) : 0,
-        altura: double.tryParse(altura) != null ? double.tryParse(altura) : 0,
+        peso: double.tryParse(peso),
+        altura: double.tryParse(altura),
         nome: nome);
 
     desafioimc2.calculaIMC(pessoa);
