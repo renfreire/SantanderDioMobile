@@ -76,9 +76,9 @@ class SplashPage extends StatelessWidget {
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color.fromARGB(
-                            255, 23, 23, 24), // Background color
+                            255, 23, 23, 24), 
                         foregroundColor:
-                            Colors.white, // Text Color (Foreground color)
+                            Colors.white, 
                       ),
                       onPressed: () {
                         if (nomeUsuario == '') {

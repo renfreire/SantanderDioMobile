@@ -1,10 +1,11 @@
-import 'package:desafiocalc/database/SharedLocal.dart';
 import 'package:desafiocalc/models/dadosimc.dart';
 import 'package:desafiocalc/screens/configPage.dart';
 import 'package:desafiocalc/services/conexaoDb.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:intl/intl.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key, required this.nome}) : super(key: key);
@@ -51,7 +52,7 @@ class _HomePageState extends State<HomePage> {
     }
 
     //await gravarDadosBD(dadosUsuario);
-
+    listaExibicao = [];
     listaExibicao.add(DadosIMC(
         usuario: widget.nome,
         horarioCalculo: DateTime.now(),
@@ -163,6 +164,7 @@ class _HomePageState extends State<HomePage> {
                                               BorderRadius.circular(20),
                                           borderSide: BorderSide.none,
                                         ),
+                                        suffixText: "metros",
                                         prefixIcon: const Icon(
                                           Icons.height,
                                           color: Color.fromARGB(
@@ -189,6 +191,7 @@ class _HomePageState extends State<HomePage> {
                                               BorderRadius.circular(20),
                                           borderSide: BorderSide.none,
                                         ),
+                                        suffixText: "Kg",
                                         prefixIcon: const Icon(
                                           Icons.balance,
                                           color: Color.fromARGB(
@@ -256,7 +259,7 @@ class _HomePageState extends State<HomePage> {
                             itemBuilder: (_, index) {
                               return Card(
                                 shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(4),
+                                  borderRadius: BorderRadius.circular(20),
                                 ),
                                 elevation: 10,
                                 color: listaExibicao[index].resultado < 25
@@ -283,10 +286,10 @@ class _HomePageState extends State<HomePage> {
                                         ),
                                       ),
                                       Text(
-                                        'Realizado por ${listaExibicao[index].usuario.toString()} em ${listaExibicao[index].horarioCalculo.toString()} ',
+                                        'Realizado por ${listaExibicao[index].usuario.toString()} em ${DateFormat("dd/MM/yyyy HH:mm").format(listaExibicao[index].horarioCalculo)} ',
                                         style: const TextStyle(
                                           fontSize: 14,
-                                          fontWeight: FontWeight.w700,
+                                          fontWeight: FontWeight.w400,
                                         ),
                                       ),
                                     ],
